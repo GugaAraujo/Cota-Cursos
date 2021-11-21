@@ -12,9 +12,133 @@ body input {
   border: 1px solid #1F2D30;
   background: #ddd;
 }
-body img {
+body .img_logo {
+  height: 50px;
   max-height: 150px;
   border: 1px solid #212181;
+}
+body i {
+  color: #18ACC4;
+}
+
+table {
+  margin: 20px;
+}
+@media (max-width: 369.99px) {
+  table {
+    font-size: 14px;
+    margin: 5px;
+  }
+}
+@media (min-width: 370px) and (max-width: 767.99px) {
+  table {
+    font-size: 14px;
+    margin: 5px;
+  }
+}
+@media (min-width: 768px) and (max-width: 899.99px) {
+  table {
+    font-size: 14px;
+    margin: 5px;
+  }
+}
+
+td {
+  padding: 15px;
+}
+@media (max-width: 369.99px) {
+  td {
+    padding: 5px;
+  }
+}
+@media (min-width: 370px) and (max-width: 767.99px) {
+  td {
+    padding: 5px;
+  }
+}
+@media (min-width: 768px) and (max-width: 899.99px) {
+  td {
+    padding: 5px;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(13, 13, 13, 0.938);
+}
+.modal__modal-content {
+  text-align: center;
+  background-color: #ddd;
+  margin: 15% auto;
+  padding: 20px;
+  width: 50%;
+  border: 2px solid #212181;
+  border-radius: 10px;
+}
+@media (max-width: 369.99px) {
+  .modal__modal-content {
+    font-size: 14px;
+    width: 95%;
+  }
+  .modal__modal-content .coluna_principal {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .modal__modal-content .coluna_secundaria {
+    width: 100%;
+  }
+  .modal__modal-content img {
+    margin: auto;
+  }
+}
+@media (min-width: 370px) and (max-width: 767.99px) {
+  .modal__modal-content {
+    font-size: 14px;
+    width: 95%;
+  }
+  .modal__modal-content .coluna_principal {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .modal__modal-content .coluna_secundaria {
+    width: 100%;
+  }
+  .modal__modal-content img {
+    margin: auto;
+  }
+}
+@media (min-width: 768px) and (max-width: 899.99px) {
+  .modal__modal-content {
+    font-size: 14px;
+    width: 95%;
+  }
+  .modal__modal-content .coluna_principal {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .modal__modal-content .coluna_secundaria {
+    width: 100%;
+  }
+  .modal__modal-content img {
+    margin: auto;
+  }
+}
+.modal__logo {
+  border: 2px solid #212181;
+  max-height: 150px;
 }
 
 /*# sourceMappingURL=style.css.map */

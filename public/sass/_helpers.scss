@@ -1,0 +1,28 @@
+$body-background:#eee;
+$body-cor-texto: #555;
+$titulo-cor: #18ACC4;
+$subtitulo-cor: #007A8D;
+$input-borda-cor: #1F2D30;;
+$cinza-claro: #ddd;
+$borda-cor-azul: #212181;
+$modal-background: lighten(rgba(0, 0, 0, 0.938),5%);
+
+@mixin small-only {
+    @media (max-width: 369.99px) {@content;}  
+}
+@mixin phone-only {
+    @media (min-width: 370px) and (max-width: 767.99px) {@content;}
+    
+}
+@mixin tablet-only {
+    @media (min-width: 768px) and (max-width: 899.99px) {@content;}
+    
+}
+@mixin desktop-only {
+    @media (min-width: 900px) {@content;}
+    
+}
+@mixin tv-only {
+    @media (min-width: 1400px) {@content;}
+    
+}
