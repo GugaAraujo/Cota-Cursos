@@ -1,0 +1,18 @@
+body{
+    background-color: #eee;
+    color: #555;
+    .titulo{
+        color:#18ACC4;
+    }
+    .subtitulo{
+        color:#007A8D;
+    }
+    input{
+        border: 1px solid #1F2D30;
+        background: #ddd;
+    }
+    img{
+        max-height: 150px;
+        border: 1px solid rgb(33, 33, 129);
+    }
+}
