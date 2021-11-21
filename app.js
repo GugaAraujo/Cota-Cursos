@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const server = require("http").createServer(app);
 const path = require("path")
 
 //Configurando porta no servidor Heroku, ou em local host
