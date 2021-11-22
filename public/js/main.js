@@ -37,7 +37,8 @@ const recebe_json_API = (resultado)=>{
         let universidade_logo = resultado[contador].university.logo_url
 
         if(diponivel){
-            lista_cursos.push(`{"id":"${contador+1}","preco_cheio":${preco_cheio},"preco_desconto":${preco_desconto},"percentual_de_desconto":${percentual_de_desconto},"campus_bairro":"${campus_bairro}","campus_cidade":"${campus_cidade}","curso_nome":"${curso_nome}","curso_titulo":"${curso_titulo}","curso_subtitulo":"${curso_subtitulo}","diponivel":"${diponivel}","inscricao":"${inscricao}","data_inicio":"${data_inicio}","universidade":"${universidade}","universidade_score":"${universidade_score}","universidade_logo":"${universidade_logo}"}`)
+          //Adicionado ID para cada objeto
+            lista_cursos.push(`{"id":"${contador}","preco_cheio":${preco_cheio},"preco_desconto":${preco_desconto},"percentual_de_desconto":${percentual_de_desconto},"campus_bairro":"${campus_bairro}","campus_cidade":"${campus_cidade}","curso_nome":"${curso_nome}","curso_titulo":"${curso_titulo}","curso_subtitulo":"${curso_subtitulo}","diponivel":"${diponivel}","inscricao":"${inscricao}","data_inicio":"${data_inicio}","universidade":"${universidade}","universidade_score":"${universidade_score}","universidade_logo":"${universidade_logo}"}`)
         }
 
     }
@@ -54,8 +55,13 @@ const recebe_json_API = (resultado)=>{
     for (var contador=0; contador<lista_cursos.length;contador++) {
       // criando as linhas e inserindo dinamicamente cada elemento do json
       var row = document.createElement("tr");
-  
-      row.innerHTML=`<td class="td_logo"><img class="img_logo" src="${lista_cursos[contador].universidade_logo}"/></td>`
+
+      row.id = `tr_${lista_cursos[contador].id}`
+      //Coluna com imagem recebeu também atributo Title, para melhorar acessibilidade.
+      row.innerHTML=`<td class="td_logo"><img class="img_logo"
+      title="Universidade ${lista_cursos[contador].universidade}. ${lista_cursos[contador].curso_nome} - ${lista_cursos[contador].campus_cidade}. Valor: ${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}" 
+      src="${lista_cursos[contador].universidade_logo}"/></td>`
+
       row.innerHTML+=`<td class="td_curso">${lista_cursos[contador].curso_nome}</td>`
       row.innerHTML+=`<td class="td_cidade">${lista_cursos[contador].campus_cidade}</td>`
       row.innerHTML+=`<td class="td_preco_cheio">${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}</td>`
@@ -64,6 +70,7 @@ const recebe_json_API = (resultado)=>{
       <i class="fas fa-plus-circle"></i>
       </a></td>`
 
+      console.log(contador, lista_cursos[contador].id)
     // add as linhas em tblBody
       tblBody.appendChild(row);
     }
@@ -72,14 +79,6 @@ const recebe_json_API = (resultado)=>{
     tabela.appendChild(tblBody);
     // inserindo <table> em <section> div_conteudo
     div_conteudo.appendChild(tabela);
-
-
-  
-  
-
-
-
-
 
 
 }
@@ -108,7 +107,9 @@ function abrir_modal(id_curso){
   conteudo_modal.innerHTML = 
   `<div class="row w-100 h-100 coluna_principal">
       <div class="col-6 d-flex align-items-center coluna_secundaria">
-        <img class="modal__logo img-fluid" src="${lista_cursos[id_curso].universidade_logo}" />
+        <img class="modal__logo" 
+        title="Universidade ${lista_cursos[id_curso].universidade}. ${lista_cursos[id_curso].curso_titulo} - ${lista_cursos[id_curso].campus_bairro}, ${lista_cursos[id_curso].campus_cidade}. Score: ${lista_cursos[id_curso].universidade_score}. Valor: ${(lista_cursos[id_curso].preco_cheio.toLocaleString('pt-BR', formatacao_monetaria))}"
+        img-fluid" src="${lista_cursos[id_curso].universidade_logo}" />
       </div>
       <div class="col-6 coluna_secundaria">
         <span class="titulo">${lista_cursos[id_curso].curso_titulo}</span> - <span class="subtitulo">${lista_cursos[id_curso].curso_subtitulo}</span>

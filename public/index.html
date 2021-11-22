@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-      <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Meta Tags -->
+    
     <meta property="og:title" content="Cursos de Graduação" />
     <meta property="og:image" content="https://www.guga-araujo.dev.br/img/meta.png" />
     <meta property="og:image:width" content="1080" />   
@@ -47,7 +47,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav ms-2 mb-2 mb-lg-0 ">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Filtrar cursos
@@ -60,7 +60,20 @@
                     <li><a class="dropdown-item" href="#">Tecnólogo</a></li>
                   </ul>
                 </li>
-
+              </ul>
+              <ul class="navbar-nav ms-2 me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Ordenar cursos
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Ordenar por Score</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Ordenar por maior valor</a></li>
+              
+                    <li><a class="dropdown-item" href="#">Ordenar por menor valor</a></li>
+                  </ul>
+                </li>
               </ul>
               <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
@@ -69,6 +82,23 @@
             </div>
           </div>
     </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- FIM NAVBAR --> 
         <!-- INÍCIO MODAL -->
         <div id="modal" class="modal">
