@@ -13,25 +13,25 @@ input_busca.addEventListener("input",()=>{
         for(let i=0; i<linha_tabela.length; i++){
             let linha = linha_tabela[i]
 
-            let consulta_cidade = document.querySelector(".td_cidade")
+            let consulta_cidade = linha.cells.td_cidade.textContent
             let cidade_confirma = true
 
-            let consulta_curso = document.querySelector(".td_curso")
+            let consulta_curso = linha.cells.td_curso.textContent
             let curso_confirma = true
 
             //Utilizando Expressão Regular para testar o valor do input
             let expressao = new RegExp(input_busca.value,"i")
             
-            console.log(consulta_curso.textContent)
+            console.log(consulta_curso)
             //consultando por Cidades
-            if(!expressao.test(consulta_cidade.textContent)){
+            if(!expressao.test(consulta_cidade)){
                 cidade_confirma = false 
             } else {
                 cidade_confirma = true  
             }
 
             //Consultando por Cursos
-            if(!expressao.test(consulta_curso.textContent)){
+            if(!expressao.test(consulta_curso)){
                 curso_confirma = false 
             } else {
                 curso_confirma = true  

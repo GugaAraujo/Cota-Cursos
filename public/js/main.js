@@ -133,8 +133,8 @@ function rendiza_tabela(){
     title="Universidade ${lista_cursos[contador].universidade}. ${lista_cursos[contador].curso_nome} - ${lista_cursos[contador].campus_cidade}. Valor: ${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}" 
     src="${lista_cursos[contador].universidade_logo}"/></td>`
 
-    row.innerHTML+=`<td class="td_curso">${lista_cursos[contador].curso_nome}</td>`
-    row.innerHTML+=`<td class="td_cidade">${lista_cursos[contador].campus_cidade}</td>`
+    row.innerHTML+=`<td class="td_curso" name="td_curso">${lista_cursos[contador].curso_nome}</td>`
+    row.innerHTML+=`<td class="td_cidade" name="td_cidade">${lista_cursos[contador].campus_cidade}</td>`
     row.innerHTML+=`<td class="td_preco_cheio">${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}</td>`
     row.innerHTML+=`<td class="td_link"><a 
     href="#" class="link_tabela" id="${lista_cursos[contador].id}" onclick="abrir_modal(${lista_cursos[contador].id})">
