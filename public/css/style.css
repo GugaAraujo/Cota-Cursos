@@ -26,6 +26,9 @@ body .img_logo {
 body i {
   color: #18ACC4;
 }
+body .invisivel {
+  display: none;
+}
 
 table {
   margin: 20px;
@@ -160,6 +163,9 @@ td {
 }
 .div_erro .erro_alerta {
   background-color: rgba(252, 252, 142, 0.616);
+}
+.div_erro .erro_proibido {
+  background-color: rgba(252, 142, 142, 0.616);
 }
 .div_erro .fadeOut {
   opacity: 0;

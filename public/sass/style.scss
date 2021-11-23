@@ -27,6 +27,9 @@ body{
     i{
         color: $titulo-cor;
     }
+    .invisivel{
+        display: none;
+    }
 }
 
 
@@ -151,6 +154,9 @@ td{
     }
     .erro_alerta{
         background-color: $msg-alerta;
+    }
+    .erro_proibido{
+        background-color: $msg-proibido;
     }
     .fadeOut {
         //removendo aviso após contagem, com efeito de transição

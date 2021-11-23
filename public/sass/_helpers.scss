@@ -8,6 +8,7 @@ $borda-cor-azul: #212181;
 $modal-background: lighten(rgba(0, 0, 0, 0.938),5%);
 
 $msg-alerta: rgba(252, 252, 142, 0.616);
+$msg-proibido: rgba(252, 142, 142, 0.616);
 
 @mixin small-only {
     @media (max-width: 369.99px) {@content;}  

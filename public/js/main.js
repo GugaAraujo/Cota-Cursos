@@ -25,10 +25,7 @@ function consulta_api(){
 
     fetch(`https://testapi.io/api/Jonas-buriti/scholarships`)
     //Aguardando Resultado
-    .then(resultado => {
-      console.log(resultado.status)
-      return resultado.json()
-    })
+    .then(resultado => resultado.json())
     .then(resultado => recebe_json_API(resultado))
     .catch(()=> exibe_erro("Não foi possível consultar a API. Tente novamente em algumas horas.","erro_alerta"))
   
@@ -53,6 +50,7 @@ const recebe_json_API = (resultado)=>{
         let universidade_score = resultado[contador].university.score
         let universidade_logo = resultado[contador].university.logo_url
 
+        //Filtrando objetos que pussuam Enable=True
         if(diponivel){
           //Adicionado ID para cada objeto
             lista_cursos.push(`{"id":"${contador}","preco_cheio":${preco_cheio},"preco_desconto":${preco_desconto},"percentual_de_desconto":${percentual_de_desconto},"campus_bairro":"${campus_bairro}","campus_cidade":"${campus_cidade}","curso_nome":"${curso_nome}","curso_titulo":"${curso_titulo}","curso_subtitulo":"${curso_subtitulo}","diponivel":"${diponivel}","inscricao":"${inscricao}","data_inicio":"${data_inicio}","universidade":"${universidade}","universidade_score":"${universidade_score}","universidade_logo":"${universidade_logo}"}`)
@@ -126,7 +124,8 @@ function rendiza_tabela(){
   // criando as celulas
   for (var contador=0; contador<lista_cursos.length;contador++) {
     // criando as linhas e inserindo dinamicamente cada elemento do json
-    var row = document.createElement("tr");
+    var row = document.createElement("tr")
+    row.className = "linha" 
 
     row.id = `tr_${lista_cursos[contador].id}`
     //Coluna com imagem recebeu também atributo Title, para melhorar acessibilidade.
