@@ -3,16 +3,22 @@ body {
   color: #555;
 }
 body .titulo {
+  font-size: 22px;
   color: #18ACC4;
 }
 body .subtitulo {
+  font-size: 22px;
   color: #007A8D;
+}
+body .preco {
+  font-weight: 600;
 }
 body input {
   border: 1px solid #1F2D30;
   background: #ddd;
 }
 body .img_logo {
+  border-radius: 5px;
   height: 50px;
   max-height: 150px;
   border: 1px solid #212181;
@@ -82,6 +88,9 @@ td {
   border: 2px solid #212181;
   border-radius: 10px;
 }
+.modal__modal-content img {
+  border-radius: 15px;
+}
 @media (max-width: 369.99px) {
   .modal__modal-content {
     font-size: 14px;
@@ -139,6 +148,22 @@ td {
 .modal__logo {
   border: 2px solid #212181;
   max-height: 150px;
+}
+
+.div_erro {
+  display: block;
+}
+.div_erro .span_erro {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.div_erro .erro_alerta {
+  background-color: rgba(252, 252, 142, 0.616);
+}
+.div_erro .fadeOut {
+  opacity: 0;
+  transition: 0.5s;
 }
 
 /*# sourceMappingURL=style.css.map */

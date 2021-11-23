@@ -4,16 +4,22 @@ body{
     background-color: $body-background;
     color: $body-cor-texto;
     .titulo{
+        font-size: 22px;
         color: $titulo-cor;
     }
     .subtitulo{
+        font-size: 22px;
         color:$subtitulo-cor;
+    }
+    .preco{
+        font-weight: 600;
     }
     input{
         border: 1px solid $input-borda-cor;
         background: $cinza-claro;
     }
     .img_logo{
+        border-radius: 5px;
         height: 50px;
         max-height: 150px;
         border: 1px solid $borda-cor-azul;
@@ -73,6 +79,9 @@ td{
         width: 50%;
         border: 2px solid $borda-cor-azul;
         border-radius: 10px;
+        img{
+            border-radius: 15px;
+        }
         @include small-only{
             font-size: 14px;
             width: 95%;
@@ -130,5 +139,22 @@ td{
     &__logo{
         border: 2px solid $borda-cor-azul;
         max-height: 150px;
+    }
+}
+
+.div_erro{
+    display: block;
+    .span_erro{
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .erro_alerta{
+        background-color: $msg-alerta;
+    }
+    .fadeOut {
+        //removendo aviso após contagem, com efeito de transição
+        opacity: 0;
+        transition: 0.5s;
     }
 }

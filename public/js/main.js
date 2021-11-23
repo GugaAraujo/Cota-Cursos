@@ -1,9 +1,12 @@
 //Modal
-modal = document.getElementById("modal")
-conteudo_modal = document.getElementById("modal-content")
+let modal = document.getElementById("modal")
+let conteudo_modal = document.getElementById("modal-content")
+
+//seção para exibição de erros
+let span_erro = document.getElementById("span_erro")
 
 //seção que receberá os cursos via DOM
-div_conteudo = document.getElementsByTagName("section")[0]
+let div_conteudo = document.getElementsByTagName("section")[0]
 
 //esta formatação será utilizada em informalções monetárias
 let formatacao_monetaria = { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }
@@ -11,15 +14,29 @@ let formatacao_monetaria = { minimumFractionDigits: 2 , style: 'currency', curre
 //Receberá as informações da API, com variáveis de melhor leitura
 let lista_cursos = []
 
+
+consulta_api()
+
+
+
 // Consultando API
-fetch(`https://testapi.io/api/Jonas-buriti/scholarships`)
-//Aguardando Resultado
-.then(resultado => resultado.json())
-.then(resultado => recebe_json_API(resultado))
+function consulta_api(){
+  
 
+    fetch(`https://testapi.io/api/Jonas-buriti/scholarship`)
+    //Aguardando Resultado
+    .then(resultado => {
+      console.log(resultado.status)
+      return resultado.json()
+    })
+    .then(resultado => recebe_json_API(resultado))
+    .catch(()=> exibe_erro("Não foi possível consultar a API. Tente novamente em algumas horas.","erro_alerta"))
+  
 
+}
+
+//Alterando variáveis para facilitar a leitura...
 const recebe_json_API = (resultado)=>{
-    //Alterando variáveis para facilitar a leitura...
     for (var contador=0; contador<resultado.length; contador++){
         let preco_cheio = resultado[contador].full_price
         let preco_desconto = resultado[contador].price_with_discount
@@ -44,46 +61,15 @@ const recebe_json_API = (resultado)=>{
     }
     //... e adicionando a lista_cursos, já em formato JSON
     lista_cursos = JSON.parse(`[${lista_cursos}]`)
-    console.log(lista_cursos)
 
 
-    //criando elementos da tabela
-    var tabela = document.createElement("table");
-    var tblBody = document.createElement("tbody");
-  
-    // criando as celulas
-    for (var contador=0; contador<lista_cursos.length;contador++) {
-      // criando as linhas e inserindo dinamicamente cada elemento do json
-      var row = document.createElement("tr");
 
-      row.id = `tr_${lista_cursos[contador].id}`
-      //Coluna com imagem recebeu também atributo Title, para melhorar acessibilidade.
-      row.innerHTML=`<td class="td_logo"><img class="img_logo"
-      title="Universidade ${lista_cursos[contador].universidade}. ${lista_cursos[contador].curso_nome} - ${lista_cursos[contador].campus_cidade}. Valor: ${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}" 
-      src="${lista_cursos[contador].universidade_logo}"/></td>`
+    rendiza_tabela()
 
-      row.innerHTML+=`<td class="td_curso">${lista_cursos[contador].curso_nome}</td>`
-      row.innerHTML+=`<td class="td_cidade">${lista_cursos[contador].campus_cidade}</td>`
-      row.innerHTML+=`<td class="td_preco_cheio">${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}</td>`
-      row.innerHTML+=`<td class="td_link"><a 
-      href="#" class="link_tabela" id="${lista_cursos[contador].id}" onclick="abrir_modal(${lista_cursos[contador].id})">
-      <i class="fas fa-plus-circle"></i>
-      </a></td>`
 
-      console.log(contador, lista_cursos[contador].id)
-    // add as linhas em tblBody
-      tblBody.appendChild(row);
-    }
-  
-    // inserindo <tbody> na <table>
-    tabela.appendChild(tblBody);
-    // inserindo <table> em <section> div_conteudo
-    div_conteudo.appendChild(tabela);
 
 
 }
-
-
 
 // Fechar modal
 window.onclick = function(event) {
@@ -100,7 +86,6 @@ window.addEventListener("keyup",(event)=>{
 function fechar_modal(){
   modal.style.display ="none"
 }
-
 
 function abrir_modal(id_curso){
   modal.style.display ="block"
@@ -124,7 +109,7 @@ function abrir_modal(id_curso){
           </div>
           <div class="row">
             <div class="col-12 ms-3">
-              <p>${(lista_cursos[id_curso].preco_cheio.toLocaleString('pt-BR', formatacao_monetaria))}</p>
+              <p class="preco">${(lista_cursos[id_curso].preco_cheio.toLocaleString('pt-BR', formatacao_monetaria))}</p>
             </div>
           </div>
         </div>        
@@ -132,5 +117,53 @@ function abrir_modal(id_curso){
   </div>`
 }
 
+//criando elementos da tabela
+function rendiza_tabela(){
 
+  var tabela = document.createElement("table");
+  var tblBody = document.createElement("tbody");
 
+  // criando as celulas
+  for (var contador=0; contador<lista_cursos.length;contador++) {
+    // criando as linhas e inserindo dinamicamente cada elemento do json
+    var row = document.createElement("tr");
+
+    row.id = `tr_${lista_cursos[contador].id}`
+    //Coluna com imagem recebeu também atributo Title, para melhorar acessibilidade.
+    row.innerHTML=`<td class="td_logo"><img class="img_logo"
+    title="Universidade ${lista_cursos[contador].universidade}. ${lista_cursos[contador].curso_nome} - ${lista_cursos[contador].campus_cidade}. Valor: ${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}" 
+    src="${lista_cursos[contador].universidade_logo}"/></td>`
+
+    row.innerHTML+=`<td class="td_curso">${lista_cursos[contador].curso_nome}</td>`
+    row.innerHTML+=`<td class="td_cidade">${lista_cursos[contador].campus_cidade}</td>`
+    row.innerHTML+=`<td class="td_preco_cheio">${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}</td>`
+    row.innerHTML+=`<td class="td_link"><a 
+    href="#" class="link_tabela" id="${lista_cursos[contador].id}" onclick="abrir_modal(${lista_cursos[contador].id})">
+    <i class="fas fa-plus-circle"></i>
+    </a></td>`
+
+  // add as linhas em tblBody
+    tblBody.appendChild(row);
+  }
+
+  // inserindo <tbody> na <table>
+  tabela.appendChild(tblBody);
+  // inserindo <table> em <section> div_conteudo
+  div_conteudo.appendChild(tabela);
+  }
+
+//exibindo erro ao usuário, informando a mensagem a ser exiba e também a classe (css) que receberá.
+function exibe_erro(string_erro,classe_erro){
+  span_erro.textContent = string_erro
+  span_erro.classList.add(classe_erro)
+
+  //removendo aviso após contagem, com efeito de transição
+setTimeout(() => {
+  span_erro.classList.add("fadeOut")
+  setTimeout(()=>{
+    span_erro.style.display = "none"
+  },400)
+}, 8000);
+  
+
+}
