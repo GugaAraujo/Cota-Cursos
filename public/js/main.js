@@ -23,7 +23,7 @@ consulta_api()
 function consulta_api(){
   
 
-    fetch(`https://testapi.io/api/Jonas-buriti/scholarship`)
+    fetch(`https://testapi.io/api/Jonas-buriti/scholarships`)
     //Aguardando Resultado
     .then(resultado => {
       console.log(resultado.status)
@@ -163,7 +163,7 @@ setTimeout(() => {
   setTimeout(()=>{
     span_erro.style.display = "none"
   },400)
-}, 8000);
+}, 6000);
   
 
 }
