@@ -4,12 +4,17 @@ let input_busca = document.getElementById("input_busca")
 input_busca.value = ""
 
 input_busca.addEventListener("input",()=>{
-    
+
     //Representa cada linha na tabela renderizada na página
     let linha_tabela = document.querySelectorAll(".linha")
 
     //para cada inserção no input, uma busca será feita
     if(input_busca.value.length>0){
+
+        // Validando input para que somente letras sejam aceitas
+        validando_input()
+
+
         for(let i=0; i<linha_tabela.length; i++){
             let linha = linha_tabela[i]
 
@@ -22,7 +27,6 @@ input_busca.addEventListener("input",()=>{
             //Utilizando Expressão Regular para testar o valor do input
             let expressao = new RegExp(input_busca.value,"i")
             
-            console.log(consulta_curso)
             //consultando por Cidades
             if(!expressao.test(consulta_cidade)){
                 cidade_confirma = false 
@@ -56,3 +60,18 @@ input_busca.addEventListener("input",()=>{
         }
     }
 })
+
+
+
+// Validando input para que somente letras sejam aceitas
+function validando_input(){
+    let apenas_letras = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/
+
+    if(!apenas_letras.test(input_busca.value)){
+        //apagando o que não atender ao filtro
+        input_busca.value = input_busca.value.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+/, '');
+        exibe_erro("Utilize somente letras em sua busca","erro_proibido")
+    }else{
+      
+    }
+}

@@ -17,7 +17,9 @@ body{
     input{
         border: 1px solid $input-borda-cor;
         background: $cinza-claro;
+
     }
+
     .img_logo{
         border-radius: 5px;
         height: 50px;
@@ -31,7 +33,6 @@ body{
         display: none;
     }
 }
-
 
 table{
     margin: 20px;
@@ -147,6 +148,7 @@ td{
 
 .div_erro{
     display: block;
+    
     .span_erro{
         font-size: 14px;
         padding: 10px;
@@ -163,4 +165,14 @@ td{
         opacity: 0;
         transition: 0.5s;
     }
+    .fadeIn {
+        //removendo aviso após contagem, com efeito de transição
+        opacity: 1;
+        transition: 0.5s;
+    }
+    .invisivel{
+        display: none;
+    }
+ 
+
 }

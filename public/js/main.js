@@ -54,15 +54,50 @@ const recebe_json_API = (resultado)=>{
         if(diponivel){
           //Adicionado ID para cada objeto
             lista_cursos.push(`{"id":"${contador}","preco_cheio":${preco_cheio},"preco_desconto":${preco_desconto},"percentual_de_desconto":${percentual_de_desconto},"campus_bairro":"${campus_bairro}","campus_cidade":"${campus_cidade}","curso_nome":"${curso_nome}","curso_titulo":"${curso_titulo}","curso_subtitulo":"${curso_subtitulo}","diponivel":"${diponivel}","inscricao":"${inscricao}","data_inicio":"${data_inicio}","universidade":"${universidade}","universidade_score":"${universidade_score}","universidade_logo":"${universidade_logo}"}`)
-        }
+
+          }
 
     }
-    //... e adicionando a lista_cursos, já em formato JSON
-    lista_cursos = JSON.parse(`[${lista_cursos}]`)
+
+    //parseando em JSON
+    let temporario = JSON.parse(`[${lista_cursos}]`)
+  
+    
+
+    //ordenando array de cursos de acordo com a escolha do usuário
+    ordena_cursos("alfabetica")
 
 
 
-    rendiza_tabela()
+
+    //ordenando array de cursos de acordo com a escolha do usuário
+    function ordena_cursos(ordem){
+      if(ordem==="alfabetica"){
+        lista_cursos = temporario.sort(function(a,b){ 
+          return a.curso_nome.localeCompare(b.curso_nome);
+        });
+      }
+
+      else if(ordem==="score"){
+        lista_cursos = temporario.sort(function(a,b){ 
+          return b.universidade_score.localeCompare(a.universidade_score);
+        });
+      }
+
+      else if(ordem==="barato"){
+        lista_cursos = temporario.sort(function(a,b){ 
+          return a.preco_cheio.localeCompare(b.preco_cheio);
+        });
+        
+      }
+
+
+      //renderizando após ordenado
+      rendiza_tabela()
+    }
+
+
+ 
 
 
 
@@ -155,14 +190,10 @@ function rendiza_tabela(){
 function exibe_erro(string_erro,classe_erro){
   span_erro.textContent = string_erro
   span_erro.classList.add(classe_erro)
+  span_erro.classList.remove("invisivel")
 
   //removendo aviso após contagem, com efeito de transição
-setTimeout(() => {
-  span_erro.classList.add("fadeOut")
-  setTimeout(()=>{
-    span_erro.style.display = "none"
-  },400)
-}, 6000);
-  
-
+  setTimeout(() => {
+    span_erro.classList.add("invisivel")
+  }, 6000);
 }
