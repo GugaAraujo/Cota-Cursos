@@ -6,7 +6,7 @@ let conteudo_modal = document.getElementById("modal-content")
 let span_erro = document.getElementById("span_erro")
 
 //seção que receberá os cursos via DOM
-let div_conteudo = document.getElementsByTagName("section")[0]
+let div_conteudo = document.getElementById("conteudo")
 
 //esta formatação será utilizada em informalções monetárias
 let formatacao_monetaria = { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }
@@ -14,6 +14,8 @@ let formatacao_monetaria = { minimumFractionDigits: 2 , style: 'currency', curre
 //Receberá as informações da API, com variáveis de melhor leitura
 let lista_cursos = []
 
+// receberá temporariamente as informações da API, antes de as ordenarmos e parsearmos o JSON
+temporario = ""
 
 consulta_api()
 
@@ -21,15 +23,11 @@ consulta_api()
 
 // Consultando API
 function consulta_api(){
-  
-
     fetch(`https://testapi.io/api/Jonas-buriti/scholarships`)
     //Aguardando Resultado
     .then(resultado => resultado.json())
     .then(resultado => recebe_json_API(resultado))
     .catch(()=> exibe_erro("Não foi possível consultar a API. Tente novamente em algumas horas.","erro_alerta"))
-  
-
 }
 
 //Alterando variáveis para facilitar a leitura...
@@ -60,47 +58,12 @@ const recebe_json_API = (resultado)=>{
     }
 
     //parseando em JSON
-    let temporario = JSON.parse(`[${lista_cursos}]`)
+    temporario = JSON.parse(`[${lista_cursos}]`)
   
     
 
     //ordenando array de cursos de acordo com a escolha do usuário
-    ordena_cursos("alfabetica")
-
-
-
-
-    //ordenando array de cursos de acordo com a escolha do usuário
-    function ordena_cursos(ordem){
-      if(ordem==="alfabetica"){
-        lista_cursos = temporario.sort(function(a,b){ 
-          return a.curso_nome.localeCompare(b.curso_nome);
-        });
-      }
-
-      else if(ordem==="score"){
-        lista_cursos = temporario.sort(function(a,b){ 
-          return b.universidade_score.localeCompare(a.universidade_score);
-        });
-      }
-
-      else if(ordem==="barato"){
-        lista_cursos = temporario.sort(function(a,b){ 
-          return a.preco_cheio.localeCompare(b.preco_cheio);
-        });
-        
-      }
-
-
-      //renderizando após ordenado
-      rendiza_tabela()
-    }
-
-
- 
-
-
-
+    ordena_cursos("mais_barato")
 
 }
 
@@ -114,8 +77,7 @@ window.addEventListener("keyup",(event)=>{
   if (event.key === "Enter"||event.key === "Escape" ) {
     fechar_modal()
   }
-})
-     
+})  
 function fechar_modal(){
   modal.style.display ="none"
 }
@@ -150,9 +112,40 @@ function abrir_modal(id_curso){
   </div>`
 }
 
+//ordenando array de cursos de acordo com a escolha do usuário
+function ordena_cursos(ordem){
+ if(ordem==="score"){
+    lista_cursos = temporario.sort(function(a,b){ 
+      return b.universidade_score - a.universidade_score;
+    });
+  }
+
+   else if(ordem==="mais_caro"){
+    lista_cursos = temporario.sort(function(a,b){ 
+      return b.preco_cheio - a.preco_cheio;
+    });
+  }
+
+  else if(ordem==="mais_barato"){
+    lista_cursos = temporario.sort(function(a,b){ 
+      return a.preco_cheio - b.preco_cheio;
+    });
+  }
+  else{
+    lista_cursos = temporario.sort(function(a,b){ 
+      return a.curso_nome.localeCompare(b.curso_nome);
+    });
+  }
+
+
+
+  //renderizando após ordenado
+  rendiza_tabela()
+}
+
 //criando elementos da tabela
 function rendiza_tabela(){
-
+  div_conteudo.innerHTML=""
   var tabela = document.createElement("table");
   var tblBody = document.createElement("tbody");
 
@@ -197,3 +190,10 @@ function exibe_erro(string_erro,classe_erro){
     span_erro.classList.add("invisivel")
   }, 6000);
 }
+
+
+
+ 
+
+
+

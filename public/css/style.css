@@ -153,8 +153,13 @@ td {
   max-height: 150px;
 }
 
+.conteudo {
+  margin-top: 0;
+}
+
 .div_erro {
   display: block;
+  height: 40px;
 }
 .div_erro .span_erro {
   font-size: 14px;
@@ -170,6 +175,13 @@ td {
 .div_erro .fadeOut {
   opacity: 0;
   transition: 0.5s;
+}
+.div_erro .fadeIn {
+  opacity: 1;
+  transition: 0.5s;
+}
+.div_erro .invisivel {
+  visibility: hidden;
 }
 
 /*# sourceMappingURL=style.css.map */

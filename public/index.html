@@ -67,13 +67,13 @@
                     Ordenar cursos
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Ordenar por ordem Alfabética</a></li>
+                    <li onclick='ordena_cursos()'><a class="dropdown-item" href="#">Ordenar por ordem Alfabética</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Ordenar por Score</a></li>
+                    <li onclick='ordena_cursos("score")'><a class="dropdown-item" href="#">Ordenar por Score</a></li>
               
-                    <li><a class="dropdown-item" href="#">Ordenar por maior valor</a></li>
+                    <li onclick='ordena_cursos("mais_caro")'><a class="dropdown-item" href="#">Ordenar por maior valor</a></li>
               
-                    <li><a class="dropdown-item" href="#">Ordenar por menor valor</a></li>
+                    <li onclick='ordena_cursos("mais_barato")'><a class="dropdown-item" href="#">Ordenar por menor valor</a></li>
                   </ul>
                 </li>
               </ul>
@@ -94,10 +94,10 @@
     <section class="container d-flex justify-content-center flex-column">
         <!-- Campo para exibição de erros -->
         <div class="div_erro mt-1 w-100 d-flex justify-content-center align-items-center" id="div_erro">
-          <span class="div_erro span_erro" id="span_erro"></span>
+          <span class="span_erro" id="span_erro">TEXTO</span>
         </div>
 
-        <div class="conteudo mt-1" id="conteudo">
+        <div class="conteudo container  d-flex justify-content-center flex-column" id="conteudo">
           <!-- Conteúdo inserido dinamicamente -->
         </div>
 

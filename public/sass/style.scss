@@ -33,7 +33,6 @@ body{
         display: none;
     }
 }
-
 table{
     margin: 20px;
     @include small-only{
@@ -145,9 +144,13 @@ td{
         max-height: 150px;
     }
 }
+.conteudo{
+    margin-top: 0;
+}
 
 .div_erro{
     display: block;
+    height: 40px;
     
     .span_erro{
         font-size: 14px;
@@ -171,7 +174,7 @@ td{
         transition: 0.5s;
     }
     .invisivel{
-        display: none;
+       visibility: hidden;
     }
  
 

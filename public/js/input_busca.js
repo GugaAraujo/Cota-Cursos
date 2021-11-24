@@ -74,4 +74,4 @@ function validando_input(){
     }else{
       
     }
-}
+}  
