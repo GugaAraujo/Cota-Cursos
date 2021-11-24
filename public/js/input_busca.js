@@ -1,18 +1,22 @@
 //buscando por Cidade e Curso
+let input_busca_cidades_e_cursos = document.getElementById("input_busca_cidades_e_cursos")
+input_busca_cidades_e_cursos.value = ""
 
-let input_busca = document.getElementById("input_busca")
-input_busca.value = ""
+//buscando por Preços
+let input_busca_preco = document.getElementById("input_busca_preco")
+input_busca_preco.value = ""
 
-input_busca.addEventListener("input",()=>{
+//Evento para "escutar" input de Cidades e Cursos
+input_busca_cidades_e_cursos.addEventListener("input",()=>{
 
     //Representa cada linha na tabela renderizada na página
     let linha_tabela = document.querySelectorAll(".linha")
 
     //para cada inserção no input, uma busca será feita
-    if(input_busca.value.length>0){
+    if(input_busca_cidades_e_cursos.value.length>0){
 
         // Validando input para que somente letras sejam aceitas
-        validando_input()
+        validando_input_cidadades_e_cursos()
 
 
         for(let i=0; i<linha_tabela.length; i++){
@@ -25,7 +29,7 @@ input_busca.addEventListener("input",()=>{
             let curso_confirma = true
 
             //Utilizando Expressão Regular para testar o valor do input
-            let expressao = new RegExp(input_busca.value,"i")
+            let expressao = new RegExp(input_busca_cidades_e_cursos.value,"i")
             
             //consultando por Cidades
             if(!expressao.test(consulta_cidade)){
@@ -61,16 +65,37 @@ input_busca.addEventListener("input",()=>{
     }
 })
 
+//Evento para "escutar" input de Preços
+input_busca_preco.addEventListener("input",()=>{
+    if(input_busca_preco.value.length>0){
 
+        // Validando input para que somente números sejam aceitos
+        validando_input_precos()
+    }
+        
+})
 
 // Validando input para que somente letras sejam aceitas
-function validando_input(){
+function validando_input_cidadades_e_cursos(){
     let apenas_letras = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/
 
-    if(!apenas_letras.test(input_busca.value)){
+    if(!apenas_letras.test(input_busca_cidades_e_cursos.value)){
         //apagando o que não atender ao filtro
-        input_busca.value = input_busca.value.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+/, '');
-        exibe_erro("Utilize somente letras em sua busca","erro_proibido")
+        input_busca_cidades_e_cursos.value = input_busca_cidades_e_cursos.value.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+/, '')
+        exibe_erro("Utilize somente letras em sua busca por cidades ou cursos","erro_proibido")
+    }else{
+      
+    }
+}  
+
+// Validando input para que somente números sejam aceitos
+function validando_input_precos(){
+    let apenas_numeros = /[0-9]+$/
+
+    if(!apenas_numeros.test(input_busca_preco.value)){
+        //apagando o que não atender ao filtro
+        input_busca_preco.value = input_busca_preco.value.replace(/[^0-9]+/, '');
+        exibe_erro("Utilize somente números em sua busca por preços","erro_proibido")
     }else{
       
     }
