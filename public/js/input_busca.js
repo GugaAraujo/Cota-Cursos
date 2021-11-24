@@ -71,6 +71,11 @@ input_busca_preco.addEventListener("input",()=>{
 
         // Validando input para que somente números sejam aceitos
         validando_input_precos()
+        
+        //Utilizando JQuery para inserir máscara monetária
+        $('#input_busca_preco').mask('R$ 0.000,00', {reverse: true});
+
+       
     }
         
 })
