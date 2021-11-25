@@ -71,6 +71,10 @@ td {
   }
 }
 
+.navbar-brand {
+  cursor: pointer;
+}
+
 .modal {
   display: none;
   position: fixed;

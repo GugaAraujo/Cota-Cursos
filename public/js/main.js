@@ -60,10 +60,8 @@ const recebe_json_API = (resultado)=>{
     //parseando em JSON
     temporario = JSON.parse(`[${lista_cursos}]`)
   
-    
-
     //ordenando array de cursos de acordo com a escolha do usuário
-    ordena_cursos("mais_barato")
+    ordena_cursos("alfabetica")
 
 }
 
@@ -114,26 +112,49 @@ function abrir_modal(id_curso){
 
 //ordenando array de cursos de acordo com a escolha do usuário
 function ordena_cursos(ordem){
- if(ordem==="score"){
-    lista_cursos = temporario.sort(function(a,b){ 
-      return b.universidade_score - a.universidade_score;
-    });
+
+  //removendo decoração underline de toda a lista de ordenação
+  let btn_ordem_class = document.querySelectorAll(".btn_ordem_class")
+  for(var i=0;i<btn_ordem_class.length;i++){
+    let btn = btn_ordem_class[i]
+    btn.style.textDecoration="none"
   }
 
+  //adicionando decoração underline apenas a lista de ordenação escolhida
+  let btn_ordem_id = document.getElementById(`btn_ordem_id_${ordem}`)
+  btn_ordem_id.style.textDecoration = "underline"
+
+
+    if(ordem==="alfabetica"){
+      lista_cursos = temporario.sort(function(a,b){ 
+        return a.curso_nome.localeCompare(b.curso_nome)
+      });
+     }
+    else if(ordem==="score"){
+      lista_cursos = temporario.sort(function(a,b){
+        return b.universidade_score - a.universidade_score
+      });
+    }
+
    else if(ordem==="mais_caro"){
-    lista_cursos = temporario.sort(function(a,b){ 
-      return b.preco_cheio - a.preco_cheio;
+      lista_cursos = temporario.sort(function(a,b){ 
+      return b.preco_cheio - a.preco_cheio
     });
   }
 
   else if(ordem==="mais_barato"){
     lista_cursos = temporario.sort(function(a,b){ 
-      return a.preco_cheio - b.preco_cheio;
+      return a.preco_cheio - b.preco_cheio
+    });
+  }
+  else if(ordem==="graduacao"){
+    lista_cursos = temporario.sort(function(a,b){ 
+      return a.curso_titulo.localeCompare(b.curso_titulo)
     });
   }
   else{
     lista_cursos = temporario.sort(function(a,b){ 
-      return a.curso_nome.localeCompare(b.curso_nome);
+      return a.curso_nome.localeCompare(b.curso_nome)
     });
   }
 

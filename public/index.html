@@ -40,47 +40,39 @@
 </head>
 <body>
     <!-- INÍCIO NAVBAR -->
-    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark bg-gradient">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
         <div class="container-fluid">
             <div class="navbar-brand" href="#">Cota Cursos</div></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-2 mb-2 mb-lg-0 ">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Filtrar cursos
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Todos os cursos</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Bacharelado</a></li>
-          
-                    <li><a class="dropdown-item" href="#">Tecnólogo</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <ul class="navbar-nav ms-2 me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Ordenar cursos
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li onclick='ordena_cursos()'><a class="dropdown-item" href="#">Ordenar por ordem Alfabética</a></li>
+                    
+                    <li onclick='ordena_cursos("alfabetica")' id="btn_ordem_id_alfabetica" class="btn_ordem_class"><a class="dropdown-item" href="#">Ordem Alfabética</a></li>
+                    
                     <li><hr class="dropdown-divider"></li>
-                    <li onclick='ordena_cursos("score")'><a class="dropdown-item" href="#">Ordenar por Score</a></li>
+
+                    <li onclick='ordena_cursos("graduacao")' id="btn_ordem_id_graduacao" class="btn_ordem_class"><a class="dropdown-item" href="#">Ordenar Graduação</a></li>
+
+                    <li onclick='ordena_cursos("score")' id="btn_ordem_id_score" class="btn_ordem_class"><a class="dropdown-item" href="#">Ordenar por Score</a></li>
               
-                    <li onclick='ordena_cursos("mais_caro")'><a class="dropdown-item" href="#">Ordenar por maior valor</a></li>
+                    <li onclick='ordena_cursos("mais_caro")' id="btn_ordem_id_mais_caro" class="btn_ordem_class"><a class="dropdown-item" href="#">Ordenar por maior valor</a></li>
               
-                    <li onclick='ordena_cursos("mais_barato")'><a class="dropdown-item" href="#">Ordenar por menor valor</a></li>
+                    <li onclick='ordena_cursos("mais_barato")' id="btn_ordem_id_mais_barato" class="btn_ordem_class"><a class="dropdown-item" href="#">Ordenar por menor valor</a></li>
+
                   </ul>
                 </li>
               </ul>
-              <form class="d-flex col-12 col-md-2">
-                <input class="form-control shadow-none me-2" class="money" type="text" maxlength="10" placeholder="Buscar por preço" id="input_busca_preco" aria-label="Buscar">
+              <form class="d-flex col-12 col-md-2 mb-2 mb-md-0">
+                <input class="form-control shadow-none me-2" type="search" placeholder="Buscar por preço" id="input_busca_preco" aria-label="Buscar">
               </form>
-              <form class="d-flex col-12 col-md-3">
+              <form class="d-flex col-12 col-md-3 me-auto">
                 <input class="form-control shadow-none me-2" type="search" placeholder="Buscar por Curso ou Cidade" id="input_busca_cidades_e_cursos" aria-label="Buscar">
               </form>
             </div>
