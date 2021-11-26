@@ -22,9 +22,18 @@ body{
 
     .img_logo{
         border-radius: 5px;
-        height: 50px;
+        max-width: 100px;
         max-height: 150px;
         border: 1px solid $borda-cor-azul;
+        @include small-only{
+            max-width: 60px;
+        }
+        @include phone-only{
+            max-width: 60px;
+        }
+        @include tablet-only{
+            max-width: 60px;
+        }
     }
     i{
         color: $titulo-cor;
@@ -85,6 +94,9 @@ td{
         border: 2px solid $borda-cor-azul;
         border-radius: 10px;
         img{
+            margin: auto;
+            max-width: 150px;
+            max-height: 150px;
             border-radius: 15px;
         }
         @include small-only{
@@ -100,9 +112,6 @@ td{
             .coluna_secundaria{
                 width: 100%;
             }
-            img{
-                margin: auto;
-            }
         }
         @include phone-only{
             font-size: 14px;
@@ -117,9 +126,6 @@ td{
             .coluna_secundaria{
                 width: 100%;
             }
-            img{
-                margin: auto;
-            }
         }
         @include tablet-only{
             font-size: 14px;
@@ -133,9 +139,6 @@ td{
             }
             .coluna_secundaria{
                 width: 100%;
-            }
-            img{
-                margin: auto;
             }
         }
         
