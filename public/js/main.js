@@ -186,7 +186,7 @@ function rendiza_tabela(){
     row.innerHTML+=`<td class="td_cidade" name="td_cidade">${lista_cursos[contador].campus_cidade}</td>`
     row.innerHTML+=`<td class="td_preco_cheio">${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}</td>`
     row.innerHTML+=`<td class="td_link"><a 
-    href="#" class="link_tabela" id="${lista_cursos[contador].id}" onclick="abrir_modal(${lista_cursos[contador].id})">
+    href="#" class="link_tabela" id="${lista_cursos[contador].id}" onclick="abrir_modal(${contador})">
     <i class="fas fa-plus-circle"></i>
     </a></td>`
 
