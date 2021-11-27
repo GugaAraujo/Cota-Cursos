@@ -64,7 +64,7 @@ function consulta_api(){
           //Filtrando objetos que pussuam Enable=True
           if(diponivel){
             //Adicionado ID para cada objeto
-              lista_cursos.push(`{"id":"${contador}","preco_cheio":${preco_cheio},"preco_desconto":${preco_desconto},"percentual_de_desconto":${percentual_de_desconto},"campus_bairro":"${campus_bairro}","campus_cidade":"${campus_cidade}","curso_nome":"${curso_nome}","curso_titulo":"${curso_titulo}","curso_subtitulo":"${curso_subtitulo}","diponivel":"${diponivel}","inscricao":"${inscricao}","data_inicio":"${data_inicio}","universidade":"${universidade}","universidade_score":"${universidade_score}","universidade_logo":"${universidade_logo}"}`)
+              lista_cursos.push(`{"id":"${contador}","preco_cheio":${preco_cheio},"preco_desconto":${preco_desconto},"percentual_de_desconto":${percentual_de_desconto},"campus_bairro":"${campus_bairro}","campus_cidade":"${campus_cidade}","curso_nome":"${curso_nome}->${contador}","curso_titulo":"${curso_titulo}","curso_subtitulo":"${curso_subtitulo}","diponivel":"${diponivel}","inscricao":"${inscricao}","data_inicio":"${data_inicio}","universidade":"${universidade}","universidade_score":"${universidade_score}","universidade_logo":"${universidade_logo}"}`)
 
             }
 
@@ -97,33 +97,48 @@ function fechar_modal(){
 }
 
 function abrir_modal(id_curso){
-  modal.style.display ="block"
-  conteudo_modal.innerHTML = 
-  `<div class="row w-100 h-100 coluna_principal">
-      <div class="col-6 d-flex align-items-center coluna_secundaria">
-        <img class="modal__logo" 
-        title="Universidade ${lista_cursos[id_curso].universidade}. ${lista_cursos[id_curso].curso_titulo} - ${lista_cursos[id_curso].campus_bairro}, ${lista_cursos[id_curso].campus_cidade}. Score: ${lista_cursos[id_curso].universidade_score}. Valor: ${(lista_cursos[id_curso].preco_cheio.toLocaleString('pt-BR', formatacao_monetaria))}"
-        img-fluid" src="${lista_cursos[id_curso].universidade_logo}" />
-      </div>
-      <div class="col-6 coluna_secundaria">
-        <span class="titulo">${lista_cursos[id_curso].curso_titulo}</span> - <span class="subtitulo">${lista_cursos[id_curso].curso_subtitulo}</span>
-        <div class="row mt-4">
-          <div class="col-6">
-            <p>${lista_cursos[id_curso].universidade}</p>
-            <p>${lista_cursos[id_curso].campus_bairro}</p>
-          </div>
-          <div class="col-6">
-            <p>${lista_cursos[id_curso].universidade_score}</p>
-            <p>${lista_cursos[id_curso].campus_cidade}</p>
-          </div>
-          <div class="row">
-            <div class="col-12 ms-3">
-              <p class="preco">${(lista_cursos[id_curso].preco_cheio.toLocaleString('pt-BR', formatacao_monetaria))}</p>
+  lista_cursos.map((elemento)=>{
+
+    modal.style.display ="block"
+
+    //localizando informações do curso, através do ID que ele recebeu.
+    if(elemento.id==id_curso){
+    console.log(elemento)
+
+
+    conteudo_modal.innerHTML = 
+    `<div class="row w-100 h-100 coluna_principal">
+        <div class="col-6 d-flex align-items-center coluna_secundaria">${elemento.id}
+          <img class="modal__logo" 
+          title="Universidade ${elemento.universidade}. ${elemento.curso_titulo} - ${elemento.campus_bairro}, ${elemento.campus_cidade}. Score: ${elemento.universidade_score}. Valor: ${(elemento.preco_cheio.toLocaleString('pt-BR', formatacao_monetaria))}"
+          img-fluid" src="${elemento.universidade_logo}" />
+        </div>
+        <div class="col-6 coluna_secundaria">
+          <span class="titulo">${elemento.curso_titulo}</span> - <span class="subtitulo">${elemento.curso_subtitulo}</span>
+          <div class="row mt-4">
+            <div class="col-6">
+              <p>${elemento.universidade}</p>
+              <p>${elemento.campus_bairro}</p>
             </div>
-          </div>
-        </div>        
-      </div>
-  </div>`
+            <div class="col-6">
+              <p>${elemento.universidade_score}</p>
+              <p>${elemento.campus_cidade}</p>
+            </div>
+            <div class="row">
+              <div class="col-12 ms-3">
+                <p class="preco">${(elemento.preco_cheio.toLocaleString('pt-BR', formatacao_monetaria))}</p>
+              </div>
+            </div>
+          </div>        
+        </div>
+    </div>`
+
+
+  }
+  })
+
+
+
 }
 
 //ordenando array de cursos de acordo com a escolha do usuário
@@ -177,13 +192,13 @@ function ordena_cursos(ordem){
 
 
   //renderizando após ordenado
-  rendiza_tabela()
+  renderiza_tabela()
 
    btn_gerador(limite_por_pagina)
 }
 
 //criando elementos da tabela
-function rendiza_tabela(){
+function renderiza_tabela(){
   div_conteudo.innerHTML=""
   var tabela = document.createElement("table");
   var tbody = document.createElement("tbody");
@@ -206,7 +221,7 @@ function rendiza_tabela(){
     row.innerHTML+=`<td class="td_cidade" name="td_cidade">${lista_cursos[contador].campus_cidade}</td>`
     row.innerHTML+=`<td class="td_preco_cheio">${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}</td>`
     row.innerHTML+=`<td class="td_link"><a 
-    href="#" class="link_tabela" id="${lista_cursos[contador].id}" onclick="abrir_modal(${contador})">
+    href="#" class="link_tabela" id="${lista_cursos[contador].id}" onclick="abrir_modal(${lista_cursos[contador].id})">
     <i class="fas fa-plus-circle"></i>
     </a></td>`
 
@@ -286,12 +301,15 @@ function exibe_erro(string_erro,classe_erro){
           let final_trecho = inicio_trecho + limite_por_pagina
           //"cortando" o array de TRs para exibir somente este trecho na página clicada
           let pagina = lista_cursos.slice(inicio_trecho,final_trecho)
+          console.log(lista_cursos)
+          console.log(pagina)
 
 
 
           //adicionando cada item do trecho no corpo da tabela
           for(let contador=0; contador<pagina.length; contador++){
             let item = pagina[contador]
+          
             // criando as linhas e inserindo dinamicamente cada elemento do json
             var row = document.createElement("tr")
             row.className = "list-group-item linha" 
@@ -307,10 +325,10 @@ function exibe_erro(string_erro,classe_erro){
             row.innerHTML+=`<td class="td_cidade" name="td_cidade">${item.campus_cidade}</td>`
             row.innerHTML+=`<td class="td_preco_cheio">${(item.preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}</td>`
             row.innerHTML+=`<td class="td_link"><a 
-            href="#" class="link_tabela" id="${item.id}" onclick="abrir_modal(${contador})">
+            href="#" class="link_tabela" id="${item.id}" onclick="abrir_modal(${item.id})">
             <i class="fas fa-plus-circle"></i>
             </a></td>`
-
+            console.log(lista_cursos[item.id].id)
             tbody.appendChild(row)
           }
         }
