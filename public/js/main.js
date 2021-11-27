@@ -179,10 +179,7 @@ function ordena_cursos(ordem){
   //renderizando após ordenado
   rendiza_tabela()
 
-  //Paginação de 10 em 10
-  //limita_itens_paginação(limite_por_pagina)
-
-  btn_gerador(limite_por_pagina)
+   btn_gerador(limite_por_pagina)
 }
 
 //criando elementos da tabela
@@ -236,33 +233,10 @@ function exibe_erro(string_erro,classe_erro){
 }
 
 
-
-//Paginação de 10 em 10
-// function limita_itens_paginação(limite_por_pagina){
-
-
-//   //pegando os elementos da tabela renderizada
-//   let tbody = document.getElementsByClassName("list-group")[0]
-//   let tr = document.getElementsByClassName("list-group-item linha")
-
-//   //contador, inserindo linha por linha na array de Tr's
-//   for(var i=0; i<tr.length;i++){
-//     arraTr.push(tr[i])
-//   }
-  
-//   //zerando a tabela, para não sobrepor dados
-//   tbody.innerHTML = ""
-
-//   //adiconando a tabela até atingir o limite_por_pagina estabelecido
-//   for(var i=0; i<limite_por_pagina;i++){
-//     tbody.appendChild(arraTr[i])
-//   }
-
-// }
-
-
+//gerando os botões de paginação
   function btn_gerador(limite_por_pagina)
   {
+    //limpando o quantidade de botões, deixando somente o "Próximo" e "Anterior"
     ul.innerHTML=
     `<li class="proximo d-inline-flex"> 
     <a href="#" id="anterior">&#139;</a>
@@ -271,7 +245,9 @@ function exibe_erro(string_erro,classe_erro){
     <a href="#" id="proximo">&#155;</a>
   </li>`
 
+    //corpor da tabela
     let tbody = document.getElementsByClassName("list-group")[0]
+
     //totald de itens da array
     const numero_Tr = lista_cursos.length
     
@@ -280,10 +256,12 @@ function exibe_erro(string_erro,classe_erro){
     }
     else{
       ul.style.display = "flex"
-      const divisao = Math.ceil(numero_Tr/limite_por_pagina)
+      //obtendo o numero de paginas
+      const numero_de_paginas = Math.ceil(numero_Tr/limite_por_pagina)
 
-
-      for(let contador=1; contador<=divisao;contador++){
+      //criando os links de cada pagina dinamicamente
+      for(let contador=1; contador<=numero_de_paginas;contador++){
+      
         let li = document.createElement("li")
         li.className = "lista_pagina d-inline-flex"
         let a = document.createElement("a")
@@ -293,7 +271,7 @@ function exibe_erro(string_erro,classe_erro){
         a.innerHTML = contador;
         ul.insertBefore(li,ul.querySelector(".anterior"))
 
-        
+        //renderizando os dados a partir do click de cada link
         a.onclick = e=>{
           //número da página clicada
           let x = e.target.getAttribute("data-page")
@@ -343,6 +321,7 @@ function exibe_erro(string_erro,classe_erro){
     }
 
     let z = 0;
+    //definindo o avanço dos botões de avançar ou retornar pagina
     function btn_proximo(){
 
       if(this.id=="proximo"&&z<=limite_por_pagina){
@@ -358,6 +337,7 @@ function exibe_erro(string_erro,classe_erro){
       }
     }
 
+    //atribuindo a função ao click
     document.getElementById("anterior").onclick = btn_proximo
     document.getElementById("proximo").onclick = btn_proximo
 
