@@ -64,7 +64,7 @@ function consulta_api(){
           //Filtrando objetos que pussuam Enable=True
           if(diponivel){
             //Adicionado ID para cada objeto
-              lista_cursos.push(`{"id":"${contador}","preco_cheio":${preco_cheio},"preco_desconto":${preco_desconto},"percentual_de_desconto":${percentual_de_desconto},"campus_bairro":"${campus_bairro}","campus_cidade":"${campus_cidade}","curso_nome":"${curso_nome}->${contador}","curso_titulo":"${curso_titulo}","curso_subtitulo":"${curso_subtitulo}","diponivel":"${diponivel}","inscricao":"${inscricao}","data_inicio":"${data_inicio}","universidade":"${universidade}","universidade_score":"${universidade_score}","universidade_logo":"${universidade_logo}"}`)
+              lista_cursos.push(`{"id":"${contador}","preco_cheio":${preco_cheio},"preco_desconto":${preco_desconto},"percentual_de_desconto":${percentual_de_desconto},"campus_bairro":"${campus_bairro}","campus_cidade":"${campus_cidade}","curso_nome":"${curso_nome}","curso_titulo":"${curso_titulo}","curso_subtitulo":"${curso_subtitulo}","diponivel":"${diponivel}","inscricao":"${inscricao}","data_inicio":"${data_inicio}","universidade":"${universidade}","universidade_score":"${universidade_score}","universidade_logo":"${universidade_logo}"}`)
 
             }
 
@@ -108,7 +108,7 @@ function abrir_modal(id_curso){
 
     conteudo_modal.innerHTML = 
     `<div class="row w-100 h-100 coluna_principal">
-        <div class="col-6 d-flex align-items-center coluna_secundaria">${elemento.id}
+        <div class="col-6 d-flex align-items-center coluna_secundaria">
           <img class="modal__logo" 
           title="Universidade ${elemento.universidade}. ${elemento.curso_titulo} - ${elemento.campus_bairro}, ${elemento.campus_cidade}. Score: ${elemento.universidade_score}. Valor: ${(elemento.preco_cheio.toLocaleString('pt-BR', formatacao_monetaria))}"
           img-fluid" src="${elemento.universidade_logo}" />
