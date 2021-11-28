@@ -20,30 +20,34 @@ let link = "https://testapi.io/api/Jonas-buriti/scholarships"
 // API utilizada para os testes de desenvolvimento
 app.get("/api/teste",(req,res)=> {
     link = "https://helper-guga.herokuapp.com"
-    console.log(link) 
     res.redirect('/index.html')
+    //Após a contagem, retomamos a API padrão
+    retornar_api_padrao()
 })
 
 // Caso haja uma API atualizada, nos mesmos padrões, poderá ser informada através da rota abaixo
 //Por hora o consumo de novas APIs somente serão aceitas se hospedadas no https:testapi.io
 app.get("/api/testapi/:user/:api",(req,res)=> {
     link = `https://testapi.io/api/${req.params.user}/${req.params.api}`
-    console.log(link) 
     res.redirect('/index.html')
+    //Após a contagem, retomamos a API padrão
+    retornar_api_padrao()
 })
 
 //Ao acessar esta rota, a API a ser consumida volta a ser o padrão
 app.get("/api/padrao",(req,res)=> {
     link = "https://testapi.io/api/Jonas-buriti/scholarships"
-    console.log(link) 
     res.redirect('/index.html')
+    //Após a contagem, retomamos a API padrão
+    retornar_api_padrao()
 })
 
 
 //Rota utilizada para informar o front qual API deve ser consumida
 app.get("/api/",(req,res)=> {
-    console.log(link) 
     res.send(link)
+    //Após a contagem, retomamos a API padrão
+    retornar_api_padrao()
 })
 
 server.listen(porta, ()=>console.log(`Server conectado!`))
@@ -51,7 +55,12 @@ server.listen(porta, ()=>console.log(`Server conectado!`))
 app.use("/",(req,res)=> {
     res.render("index.html")
     //Após a contagem, retomamos a API padrão
-    setTimeout(() => {
-      link = "https://testapi.io/api/Jonas-buriti/scholarships"
-    }, 5000);
+    retornar_api_padrao()
 })
+
+//Após a contagem, retomamos a API padrão
+function retornar_api_padrao(){
+    setTimeout(() => {
+        link = "https://testapi.io/api/Jonas-buriti/scholarships"
+      }, 8000);
+}
