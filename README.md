@@ -3,10 +3,10 @@
 <h4 align="center">🔗 Consumo de APIs externas, utilizando Node.Js, Javascript Vanilla, SCSS e Bootstrap.</h4>
 
 <p align="center">
- <a href="#status">Objetivo</a> •
- <a href="#features">Features</a> • 
+ <a href="#status">Status</a> •
+ <a href="#features">Funcionalidades</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
- <a href="#licenc-a">Licença</a> • 
+ <a href="#licenca">Licença</a> • 
  <a href="#autor">Autor</a>
 </p>
 
@@ -14,7 +14,7 @@
   Status do projeto: Concluído ✅
 </h4>
 
-<h3 id="features"> Features</h3>
+<h3 id="features">⚙️ Funcionalidades</h3>
 
 - [x] Busca por: Cursos, Cidade e Preço.
 - [x] Ordenar por: score, graduação, maior ou menor valor e alfabeticamente.
@@ -30,6 +30,17 @@
 - [SCSS-SASS](https://sass-lang.com/)
 - [Express](https://expressjs.com/pt-br/)
 - [JavaScript](https://www.javascript.com/)
+
+
+
+
+<img id="licenca" src="https://img.shields.io/badge/Licen%C3%A7a-MIT-green"/>
+
+
+
+
+
+
 
 <h3 id="autor">Autor</h3>
 <table>
