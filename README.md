@@ -57,7 +57,7 @@ Para agilizar o desenvolvimento, **Bootstrap** foi utilizado um recurso utilizad
 Se ao acaso a API não estiver disponível, uma mensagem de erro surgirá por alguns instantes ao usúario, indicando a falha.
 Também há avisos indicando quando os inputs de busca não podem receber um caracter contra indicado para a busca em questão.
 
-<h5 id="API_teste"> Teste de teste de API</h5>
+<h4 id="API_teste"> Teste de teste de API</h4>
 Para minizar falhas, foi desenvolvida uma API de teste, com maior quantidade de informações. Esta API pode ser consumida através da rota <a href="https://cota-cursos.herokuapp.com/api/teste"><i>https://cota-cursos.herokuapp.com/api/teste</i></a>.
 
 É possível voltar a consumir a API anterior pela rota <a href="https://cota-cursos.herokuapp.com/api/padrao"><i>https://cota-cursos.herokuapp.com/api/padrao</i></a>.
