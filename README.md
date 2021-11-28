@@ -9,7 +9,7 @@
 <p align="center">
   <a href="#features">Funcionalidades</a> • 
  <a href="#sobre">Detalhes da aplicação</a> •
-  <a href="#install">instalando</a> • 
+  <a href="#install">Instalando</a> • 
   <a href="#erros">Erros</a> • 
   <a href="#API_teste">API de teste</a> •
  <a href="#tecnologias">Tecnologias</a> • 
@@ -58,7 +58,7 @@ Para agilizar o desenvolvimento, **Bootstrap** foi um recurso utilizado para con
 Se ao acaso a API não estiver disponível, uma mensagem de erro surgirá por alguns instantes ao usuário, indicando a falha.
 Também há avisos indicando quando os inputs de busca não podem receber um caracter contra indicado para a busca em questão.
 
-<img width="160" src="https://raw.githubusercontent.com/GugaAraujo/Cota-Cursos/main/public/assets/cota-cursos.gif" alt="Testando erros em dispositivo mobile/>
+<img width="160" src="https://raw.githubusercontent.com/GugaAraujo/Cota-Cursos/main/public/assets/cota-cursos.gif" alt="Testando erros em dispositivo mobile"/>
 
 
 <h4 id="API_teste"> Teste de API</h4>
@@ -92,8 +92,6 @@ Flask, HTML5, CSS3 e SASS, com noções de UX/UI.
 Cursando Análise e Desenvolvimento de Sistemas na Estácio.
 
 https://www.guga-araujo.dev.br/
-
-Conheça meu perfil no GitHub:
-https://github.com/GugaAraujo</td>
+</td>
    </tr>
 </table>
