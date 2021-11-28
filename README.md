@@ -34,7 +34,7 @@ A aplicação se encontra hospedada na Heroku e pode ser acessada em *https://co
 
 A informações estão foram paginadas, com **JavaScript**, exibindo 10 cursos por vez. Ainda com o JavaScript Vanilla, foram feitas as regras de validação nos inputs de busca, apresentações de erros, assim como máscara de número e troca da ordem dos cursos.
 
-Para agilizar o desenvolvimento, **Bootstrap** foi utilizado um recurso utilizado para configurações de responsividade e posicionamento dos elementos da página. As folhas de estilo garanharam organização e legibilidade com o pré-processamento do **Sass**.
+Para agilizar o desenvolvimento, **Bootstrap** foi um recurso utilizado para configurações de responsividade e posicionamento dos elementos da página. As folhas de estilo garanharam organização e legibilidade com o pré-processamento do **Sass**.
 
 <h3 id="install">🗂 Instalando</h3>
 
@@ -54,10 +54,10 @@ Para agilizar o desenvolvimento, **Bootstrap** foi utilizado um recurso utilizad
 
 É importante lembrar que na API original constam alguns links publicados em protocolos HTTP, sendo passíveis de bloqueios por parte dos navegadores. Há um título que descreve a logo da universidade, auxiliando a quem possa ter dificuldades de enxergar, que podem ser exibidos nos casos de bloqueio da imagem.
 
-Se ao acaso a API não estiver disponível, uma mensagem de erro surgirá por alguns instantes ao usúario, indicando a falha.
+Se ao acaso a API não estiver disponível, uma mensagem de erro surgirá por alguns instantes ao usuário, indicando a falha.
 Também há avisos indicando quando os inputs de busca não podem receber um caracter contra indicado para a busca em questão.
 
-<h4 id="API_teste"> Teste de teste de API</h4>
+<h4 id="API_teste"> Teste de API</h4>
 Para minizar falhas, foi desenvolvida uma API de teste, com maior quantidade de informações. Esta API pode ser consumida através da rota <a href="https://cota-cursos.herokuapp.com/api/teste"><i>https://cota-cursos.herokuapp.com/api/teste</i></a>.
 
 É possível voltar a consumir a API anterior pela rota <a href="https://cota-cursos.herokuapp.com/api/padrao"><i>https://cota-cursos.herokuapp.com/api/padrao</i></a>.
