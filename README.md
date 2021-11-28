@@ -53,7 +53,9 @@ Para agilizar o desenvolvimento, **Bootstrap** foi um recurso utilizado para con
     
 <h4 id="erros">🚫 Tratando Erros</h4>
 
-É importante lembrar que na API original constam alguns links publicados em protocolos HTTP, sendo passíveis de bloqueios por parte dos navegadores. Há um título que descreve a logo da universidade, auxiliando a quem possa ter dificuldades de enxergar, que podem ser exibidos nos casos de bloqueio da imagem.
+<img width="400" src="https://raw.githubusercontent.com/GugaAraujo/Cota-Cursos/main/public/assets/erro_api.jpg" alt="Testando erro em leitura de API"/>
+
+É importante lembrar que na API original constam alguns links publicados em protocolo HTTP, passíveis de bloqueios por parte dos navegadores. Há um título que descreve a logo da universidade, auxiliando a quem possa ter dificuldades de enxergar, que podem ser exibidos nos casos de bloqueio da imagem.
 
 Se ao acaso a API não estiver disponível, uma mensagem de erro surgirá por alguns instantes ao usuário, indicando a falha.
 Também há avisos indicando quando os inputs de busca não podem receber um caracter contra indicado para a busca em questão.
@@ -70,6 +72,10 @@ Caso haja alguma nova API hospedada na <a href="https://testapi.io">*testapi.io*
 
     # https://cota-cursos.herokuapp.com/api/USUARIO/NOME_DA_API
     Por exemplo: https://cota-cursos.herokuapp.com/api/Jonas-buriti/scholarships
+    
+Ao informar Usuário e Nome, os parâmetros serão reorganizados em um novo link que será enviado pela rota "/api/" paraconsumo no front-end.
+
+<img width="760" src="https://raw.githubusercontent.com/GugaAraujo/Cota-Cursos/main/public/assets/custom_api.jpg" alt="API customizada"/>
 
 
 <h3 id="tecnologias"> Tecnologias</h3>
