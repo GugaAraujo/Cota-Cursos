@@ -10,6 +10,7 @@
   <a href="#features">Funcionalidades</a> • 
  <a href="#sobre">Detalhes da aplicação</a> •
   <a href="#install">instalando</a> • 
+   <a href="#erros">Erros</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#licenca">Licença</a> • 
  <a href="#autor">Autor</a>
