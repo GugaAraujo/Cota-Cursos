@@ -13,7 +13,6 @@
   <a href="#erros">Erros</a> • 
   <a href="#API_teste">API de teste</a> •
  <a href="#tecnologias">Tecnologias</a> • 
- <a href="#licenca">Licença</a> • 
  <a href="#autor">Autor</a>
 </p>
 
@@ -26,7 +25,7 @@
 - [x] Visualizar detalhes no modal.
 - [X] Rotas para troca de API.
 
-<h3 id="sobre">🔖 Detalhes do projeto</h3>
+<h3 id="sobre">🔖 Detalhes da aplicação</h3>
 
 O **Cota Cusos** apresenta informações de cursos contidas na **API** *https://testapi.io/api/Jonas-buriti/scholarships*, inseridas dinamicamente através de manipulação de DOM.
 
