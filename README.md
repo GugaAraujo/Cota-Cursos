@@ -56,7 +56,7 @@ Se ao acaso a API não estiver disponível, uma mensagem de erro surgirá por al
 Também há avisos indicando quando os inputs de busca não podem receber um caracter contra indicado para a busca em questão.
 
 <h6 id="tecnologias"> Teste de teste de API</h6>
-Para minizar falhas, foi desenvolvida uma API de teste, com maior quantidade de informações. Esta API pode ser consumida através da rota <a href="https://helper-guga.herokuapp.com/api/teste"><i>https://cota-cursos.herokuapp.com/api/teste</i></a>.
+Para minizar falhas, foi desenvolvida uma API de teste, com maior quantidade de informações. Esta API pode ser consumida através da rota <a href="https://cota-cursos.herokuapp.com/api/teste"><i>https://cota-cursos.herokuapp.com/api/teste</i></a>.
 
 É possível voltar a consumir a API anterior pela rota <a href="https://helper-guga.herokuapp.com/api/padrao"><i>https://cota-cursos.herokuapp.com/api/teste</i></a>.
 
