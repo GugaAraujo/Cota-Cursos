@@ -31,7 +31,7 @@ O **Cota Cusos** apresenta informações de cursos contidas na **API** *https://
 
 A aplicação se encontra hospedada na Heroku e pode ser acessada em *https://cota-cursos.herokuapp.com*.
 
-A informações estão foram paginadas, com **JavaScript**, exibindo 10 cursos por vez. Ainda com o JavaScript Vanilla, foram feitas as regras de validação nos inputs de busca, apresentações de erros, assim como máscara de número e troca da ordem dos cursos.
+A informações foram paginadas, com **JavaScript**, exibindo 10 cursos por vez. Ainda com o JavaScript Vanilla, foram feitas as regras de validação nos inputs de busca, apresentações de erros, assim como máscara de número e troca da ordem dos cursos.
 
 Para agilizar o desenvolvimento, **Bootstrap** foi um recurso utilizado para configurações de responsividade e posicionamento dos elementos da página. As folhas de estilo garanharam organização e legibilidade com o pré-processamento do **Sass**.
 
