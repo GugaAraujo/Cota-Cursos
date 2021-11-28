@@ -9,26 +9,30 @@ input_busca_preco.value = ""
 
 //Evento para "escutar" input de Cidades e Cursos
 input_busca_cidades_e_cursos.addEventListener("input",()=>{
+
+    let tbody = document.getElementsByTagName("tbody")[0]
     
-    //Representa as linhas na tabela renderizada na página
-    let linha_tabela = document.querySelectorAll(".linha")
 
     //para cada inserção no input, uma busca será feita
     if(input_busca_cidades_e_cursos.value.length>0){
+        //zerando a tabela a cada busca
+        tbody.innerHTML=""
 
         // Validando input para que somente letras sejam aceitas
         validando_input_cidadades_e_cursos()
 
 
-        for(let i=0; i<linha_tabela.length; i++){
+        for(let i=0; i<lista_cursos.length; i++){
+        
+
              //cada única linha da tabela
-            let linha = linha_tabela[i]
+            let linha = lista_cursos[i]
 
             //Removendo acentuações para comparar o valor do input com o valor em tabela
-            let consulta_cidade = (linha.cells.td_cidade.textContent).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            let consulta_cidade = (linha.campus_cidade).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
             let cidade_confirma = true
 
-            let consulta_curso = (linha.cells.td_curso.textContent).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            let consulta_curso = (linha.curso_nome).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
             let curso_confirma = true
 
             let busca_cidades_e_cursos = (input_busca_cidades_e_cursos.value).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -52,44 +56,61 @@ input_busca_cidades_e_cursos.addEventListener("input",()=>{
 
             //Se houver o valor inserido no input dentro da linha na tabela, ela se manterá visível...
             if(cidade_confirma||curso_confirma){
-                linha.classList.remove("invisivel")
-            }
-            //Caso contrário, receberá display:none.
-            else{
-                linha.classList.add("invisivel")
+                if(linha!=undefined){
+                    // criando as linhas e inserindo dinamicamente cada elemento do json
+                    var row = document.createElement("tr")
+                    row.className = "list-group-item linha" 
+                    row.id = `tr_${linha.id}`
+
+                    //Coluna com imagem recebeu também atributo Title, para melhorar acessibilidade.
+                    row.innerHTML=`<td class="td_logo"><img class="img_logo"
+                    title="Universidade ${linha.universidade}" 
+                    src="${linha.universidade_logo}"/></td>`
+
+                    row.innerHTML+=`<td class="td_curso" name="td_curso">${linha.curso_nome}</td>`
+                    row.innerHTML+=`<td class="td_cidade" name="td_cidade">${linha.campus_cidade}</td>`
+                    row.innerHTML+=`<td class="td_preco_cheio">${(linha.preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}</td>`
+                    row.innerHTML+=`<td class="td_link"><a 
+                    href="#" class="link_tabela" id="${linha.id}" onclick="abrir_modal(${linha.id})">
+                    <i class="fas fa-plus-circle"></i>
+                    </a></td>`
+
+                    // add as linhas em tbody
+                    tbody.appendChild(row)  
+                }
             }
 
         }
     }
     else{
-        //Se input for zerado novamento, tudo volta a ser exibido.
-        for(let i=0; i<linha_tabela.length; i++){
-            let linha = linha_tabela[i];
-            linha.classList.remove("invisivel")
-        }
+        //ao zerar o imput, limpamos a tabela e renderizamos em ordem alfabética
+        tbody.innerHTML=""
+        ordena_cursos("alfabetica")
     }
 })
 
 //Evento para "escutar" input de Preços
 input_busca_preco.addEventListener("input",()=>{
 
-    //Representa as linhas na tabela renderizada na página
-    let linha_tabela = document.querySelectorAll(".linha")
+    let tbody = document.getElementsByTagName("tbody")[0]
+
 
     if(input_busca_preco.value.length>0){
+        //zerando a tabela a cada busca
+        tbody.innerHTML=""
 
         // Validando input para que somente números sejam aceitos
         validando_input_precos()
         
         //para cada inserção no input, uma busca será feita
-        for(let i=0; i<linha_tabela.length; i++){
+        for(let i=0; i<lista_cursos.length; i++){
             
             //cada única linha da tabela
-            let linha = linha_tabela[i]
+            let linha = lista_cursos[i]
 
             //removendo qualquer caracter que não seja um número, para comparar
             //o valor do input com o valor na tabela
-            let consulta_preco = (linha.cells[3].textContent).replace(/[^0-9]+/g, '')
+            let consulta_preco = (linha.preco_cheio).toFixed(2).replace(/[^0-9]+/g, '')
             let busca_preco = input_busca_preco.value.replace(/[^0-9]+/g, '')
 
    
@@ -107,22 +128,36 @@ input_busca_preco.addEventListener("input",()=>{
 
             //Se houver o valor inserido no input dentro da linha na tabela, ela se manterá visível...
             if(preco_confirma){
-                linha.classList.remove("invisivel")
-            }
-            //Caso contrário, receberá display:none.
-            else{
-                linha.classList.add("invisivel")
-            }
+                if(linha!=undefined){
+                    // criando as linhas e inserindo dinamicamente cada elemento do json
+                    var row = document.createElement("tr")
+                    row.className = "list-group-item linha" 
+                    row.id = `tr_${linha.id}`
 
+                    //Coluna com imagem recebeu também atributo Title, para melhorar acessibilidade.
+                    row.innerHTML=`<td class="td_logo"><img class="img_logo"
+                    title="Universidade ${linha.universidade}" 
+                    src="${linha.universidade_logo}"/></td>`
+
+                    row.innerHTML+=`<td class="td_curso" name="td_curso">${linha.curso_nome}</td>`
+                    row.innerHTML+=`<td class="td_cidade" name="td_cidade">${linha.campus_cidade}</td>`
+                    row.innerHTML+=`<td class="td_preco_cheio">${(linha.preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}</td>`
+                    row.innerHTML+=`<td class="td_link"><a 
+                    href="#" class="link_tabela" id="${linha.id}" onclick="abrir_modal(${linha.id})">
+                    <i class="fas fa-plus-circle"></i>
+                    </a></td>`
+
+                    // add as linhas em tbody
+                    tbody.appendChild(row)  
+                }
+            }
         }
-
     }
     //Se input for zerado novamento, tudo volta a ser exibido.
     else{
-        for(let i=0; i<linha_tabela.length; i++){
-            let linha = linha_tabela[i];
-            linha.classList.remove("invisivel")
-        }
+        //ao zerar o imput, limpamos a tabela e renderizamos em ordem alfabética
+        tbody.innerHTML=""
+        ordena_cursos("alfabetica")
     }
 
     //Utilizando JQuery para inserir máscara monetária

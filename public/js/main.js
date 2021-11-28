@@ -80,7 +80,6 @@ function consulta_api(){
 }
 
 
-
 // Fechar modal
 window.onclick = function(event) {
   if (event.target === modal) {
@@ -103,15 +102,13 @@ function abrir_modal(id_curso){
 
     //localizando informações do curso, através do ID que ele recebeu.
     if(elemento.id==id_curso){
-    console.log(elemento)
-
 
     conteudo_modal.innerHTML = 
     `<div class="row w-100 h-100 coluna_principal">
         <div class="col-6 d-flex align-items-center coluna_secundaria">
-          <img class="modal__logo" 
-          title="Universidade ${elemento.universidade}. ${elemento.curso_titulo} - ${elemento.campus_bairro}, ${elemento.campus_cidade}. Score: ${elemento.universidade_score}. Valor: ${(elemento.preco_cheio.toLocaleString('pt-BR', formatacao_monetaria))}"
-          img-fluid" src="${elemento.universidade_logo}" />
+          <img class="modal__logo img-fluid" 
+          title="Universidade ${elemento.universidade}"
+           src="${elemento.universidade_logo}" />
         </div>
         <div class="col-6 coluna_secundaria">
           <span class="titulo">${elemento.curso_titulo}</span> - <span class="subtitulo">${elemento.curso_subtitulo}</span>
@@ -213,8 +210,8 @@ function renderiza_tabela(){
     row.id = `tr_${lista_cursos[contador].id}`
 
     //Coluna com imagem recebeu também atributo Title, para melhorar acessibilidade.
-    row.innerHTML=`<td class="td_logo"><img class="img_logo"
-    title="Universidade ${lista_cursos[contador].universidade}. ${lista_cursos[contador].curso_nome} - ${lista_cursos[contador].campus_cidade}. Valor: ${(lista_cursos[contador].preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}" 
+    row.innerHTML=`<td class="td_logo"><img class="img_logo img-fluid"
+    title="Universidade ${lista_cursos[contador].universidade}"
     src="${lista_cursos[contador].universidade_logo}"/></td>`
 
     row.innerHTML+=`<td class="td_curso" name="td_curso">${lista_cursos[contador].curso_nome}</td>`
@@ -301,10 +298,7 @@ function exibe_erro(string_erro,classe_erro){
           let final_trecho = inicio_trecho + limite_por_pagina
           //"cortando" o array de TRs para exibir somente este trecho na página clicada
           let pagina = lista_cursos.slice(inicio_trecho,final_trecho)
-          console.log(lista_cursos)
-          console.log(pagina)
-
-
+    
 
           //adicionando cada item do trecho no corpo da tabela
           for(let contador=0; contador<pagina.length; contador++){
@@ -317,8 +311,8 @@ function exibe_erro(string_erro,classe_erro){
             row.id = `tr_${item.id}`
 
             //Coluna com imagem recebeu também atributo Title, para melhorar acessibilidade.
-            row.innerHTML=`<td class="td_logo"><img class="img_logo"
-            title="Universidade ${item.universidade}. ${item.curso_nome} - ${item.campus_cidade}. Valor: ${(item.preco_cheio).toLocaleString('pt-BR', formatacao_monetaria)}" 
+            row.innerHTML=`<td class="td_logo"><img class="img_logo img-fluid"
+            title="Universidade ${item.universidade}" 
             src="${item.universidade_logo}"/></td>`
 
             row.innerHTML+=`<td class="td_curso" name="td_curso">${item.curso_nome}</td>`
@@ -328,7 +322,7 @@ function exibe_erro(string_erro,classe_erro){
             href="#" class="link_tabela" id="${item.id}" onclick="abrir_modal(${item.id})">
             <i class="fas fa-plus-circle"></i>
             </a></td>`
-            console.log(lista_cursos[item.id].id)
+
             tbody.appendChild(row)
           }
         }
