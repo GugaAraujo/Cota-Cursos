@@ -30,10 +30,9 @@ O **Cota Cusos** apresenta informações de cursos contidas na **API** *https://
 
 A aplicação se encontra hospedada na Heroku e pode ser acessada em *https://cota-cursos.herokuapp.com*.
 
-A informações estão foram paginadas, com **JavaScript**, exibindo 10 cursos por vez. Ainda com o JavaScript Vanilla, foram feitas as regras de validação nos inputs de Busca, apresentações de erros, assim como máscara de número e troca da ordem dos cursos.
+A informações estão foram paginadas, com **JavaScript**, exibindo 10 cursos por vez. Ainda com o JavaScript Vanilla, foram feitas as regras de validação nos inputs de busca, apresentações de erros, assim como máscara de número e troca da ordem dos cursos.
 
 Para agilizar o desenvolvimento, **Bootstrap** foi utilizado um recurso utilizado para configurações de responsividade e posicionamento dos elementos da página. As folhas de estilo garanharam organização e legibilidade com o pré-processamento do **Sass**.
-
 
 <h3 id="install">🗂 Instalando</h3>
 
@@ -49,6 +48,18 @@ Para agilizar o desenvolvimento, **Bootstrap** foi utilizado um recurso utilizad
     # Iniciar o projeto
     $ node app
     
+<h4 id="erros">🚫 Tratando Erros</h4>
+
+É importante lembrar que na API original constam alguns links publicados em protocolos HTTP, sendo passíveis de bloqueios por parte dos navegadores. Há um título que descreve a logo da universidade, auxiliando a quem possa ter dificuldades de enxergar, que podem ser exibidos nos casos de bloqueio da imagem.
+
+Se ao acaso a API não estiver disponível, uma mensagem de erro surgirá por alguns instantes ao usúario, indicando a falha.
+Também há avisos indicando quando os inputs de busca não podem receber um caracter contra indicado para a busca em questão.
+
+<h6 id="tecnologias"> Teste de teste de API</h6>
+Para minizar falhas, foi desenvolvida uma API de teste, com maior quantidade de informações. Esta API pode ser consumida através da rota
+*https://helper-guga.herokuapp.com/api/teste*.
+
+Caso haja alguma nova API hospedada na <a href="www.testapi.io.com">testapi.io</a>
 
 <h3 id="tecnologias"> Tecnologias</h3>
 
