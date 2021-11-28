@@ -26,14 +26,34 @@ let arraTr = []
 //UL botão de paginação, proximo e anterior
 let ul = document.querySelector(".lista_paginacao_ul")
 
+//receberá do servidor qual a API a ser consumida
+let link_api = ""
 
-consulta_api()
+
+verifica_link_api()
+//Consultando qual API será consumida
+function verifica_link_api(){
+  fetch(`https://cota-cursos.herokuapp.com/api/`)
+    //Aguardando Resultado
+    .then(resultado => resultado.text())
+    .then(resultado => recebe_link(resultado))
+    .catch((error)=> {
+      console.log(error)
+      exibe_erro("Não foi possível consultar a API. Tente novamente em algumas horas.","erro_alerta")
+    })
+
+    let recebe_link = (resultado) =>{
+      link_api = resultado
+      // Consumindo API indicada pelo servidor
+      consome_api(link_api)
+    }
+
+}
 
 
-
-// Consultando API
-function consulta_api(){
-    fetch(`https://helper-guga.herokuapp.com`)
+// Consumindo API indicada pelo servidor
+function consome_api(link_api){
+    fetch(link_api)
     //Aguardando Resultado
     .then(resultado => resultado.json())
     .then(resultado => recebe_json_API(resultado))
