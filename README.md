@@ -72,7 +72,7 @@ Caso haja alguma nova API hospedada na <a href="https://testapi.io">*testapi.io*
     # https://cota-cursos.herokuapp.com/api/USUARIO/NOME_DA_API
     Por exemplo: https://cota-cursos.herokuapp.com/api/Jonas-buriti/scholarships
     
-Ao informar Usuário e Nome, os parâmetros serão reorganizados em um novo link que será enviado pela rota "/api/" para consumo no front-end.
+Ao informar Usuário e Nome da API, os parâmetros serão reorganizados em um novo link que será enviado pela rota "/api/" para consumo no front-end.
 
 <img width="760" src="https://raw.githubusercontent.com/GugaAraujo/Cota-Cursos/main/public/assets/custom_api.jpg" alt="API customizada"/>
 
