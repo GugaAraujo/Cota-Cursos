@@ -3,7 +3,6 @@
  <h6 align="center" id="status"> 
   Status do projeto: Concluído ✅
 </h6>
-<p align="center">👉 <a href="https://cota-cursos.herokuapp.com">cota-cursos.herokuapp.com </a>💻</p>
 <h4 align="center">🔗 Consumo de APIs externas, utilizando Node.Js, Javascript Vanilla, SCSS e Bootstrap.</h4>
 
 <p align="center">
