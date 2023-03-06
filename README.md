@@ -89,7 +89,7 @@ Ao informar Usuário e Nome da API, os parâmetros serão reorganizados em um no
 <h3 id="autor">Autor</h3>
 <table>
   <tr>
-    <td align="center"><a href="https://www.guga-araujo.dev.br/"><img style="border-radius: 50%;" src="https://www.guga-araujo.dev.br/img/perfil.jpg" width="100px;" alt="Gustavo Araújo - www.guga-araujo.dev.br"/><br /><sub><b>Gustavo Araújo</b></sub></a><br /><p>Desenvolvedor Fullstack 💻</p></td>
+    <td align="center"><a href="https://www.guga-araujo.dev.br/"><img style="border-radius: 50%;" src="https://www.guga-araujo.dev.br/assets/images/perfil.jpg" width="100px;" alt="Gustavo Araújo - www.guga-araujo.dev.br"/><br /><sub><b>Gustavo Araújo</b></sub></a><br /><p>Desenvolvedor Fullstack 💻</p></td>
     <td align="center"><p> Desenvolvedor Node.Js, Python e JavaScript, trabalhando com as tecnologias:
 Flask, HTML5, CSS3 e SASS, com noções de UX/UI.
 
