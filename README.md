@@ -90,10 +90,8 @@ Ao informar Usuário e Nome da API, os parâmetros serão reorganizados em um no
 <table>
   <tr>
     <td align="center"><a href="https://www.guga-araujo.dev.br/"><img style="border-radius: 50%;" src="https://www.guga-araujo.dev.br/assets/images/perfil.jpg" width="100px;" alt="Gustavo Araújo - www.guga-araujo.dev.br"/><br /><sub><b>Gustavo Araújo</b></sub></a><br /><p>Desenvolvedor Fullstack 💻</p></td>
-    <td align="center"><p> Desenvolvedor Node.Js, Python e JavaScript, trabalhando com as tecnologias:
-Flask, HTML5, CSS3 e SASS, com noções de UX/UI.
-
-Cursando Análise e Desenvolvimento de Sistemas na Estácio.
+    <td align="center"><p> 
+     Desenvolvedor Fullstack com mais de 3 anos de experiência com aplicações Web. Trabalho principalmente com Node.js, Vue.js, banco de dados relacional e não-relacional (PostgreSQL, MySQL e MongoDB). Tenho experiência na construção de sistemas web, desde o início do projeto, manutenção e deploy da aplicação. Experiência com times remotos e ágeis.
 
 https://www.guga-araujo.dev.br/
 </td>
