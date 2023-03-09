@@ -44,7 +44,7 @@ Para agilizar o desenvolvimento, **Bootstrap** foi um recurso utilizado para con
     $ cd Cota-Cursos
 
     # Instalar as dependências
-    $ npm init
+    $ npm install
 
     # Iniciar o projeto
     $ node app
